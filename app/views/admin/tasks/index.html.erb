@@ -1,0 +1,34 @@
+<h2>Tasks</h2>
+<p><a href="<%= new_admin_task_path %>">New Task</a></p>
+<table>
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Title</th>
+      <th>User</th>
+      <th>Status</th>
+      <th>Due Date</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @tasks.each do |task| %>
+      <tr>
+        <td><%= task.id %></td>
+        <td><%= task.title %></td>
+        <td><%= task.user&.name %> (<%= task.user&.email %>)</td>
+        <td><%= task.status %></td>
+        <td><%= task.due_date %></td>
+        <td class="actions">
+          <a href="<%= admin_task_path(task) %>">View</a>
+          <a href="<%= edit_admin_task_path(task) %>">Edit</a>
+          <form action="<%= admin_task_path(task) %>" method="post" style="display:inline">
+            <input type="hidden" name="_method" value="delete">
+            <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+            <button type="submit" onclick="return confirm('Delete?')">Delete</button>
+          </form>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

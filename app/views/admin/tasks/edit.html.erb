@@ -1,0 +1,6 @@
+<h2>Edit Task</h2>
+<% task = @task %>
+<% form_action = admin_task_path(task) %>
+<% method_override = 'put' %>
+<%= render 'form', task: task, form_action: form_action, method_override: method_override %>
+<p><a href="<%= admin_tasks_path %>">Back</a></p>

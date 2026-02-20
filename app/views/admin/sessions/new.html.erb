@@ -1,0 +1,15 @@
+<h2>Admin Sign In</h2>
+<form action="<%= admin_login_path %>" method="post">
+  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+  <div>
+    <label>Email</label><br>
+    <input type="email" name="email" required>
+  </div>
+  <div>
+    <label>Password</label><br>
+    <input type="password" name="password" required>
+  </div>
+  <div style="margin-top:10px">
+    <button type="submit">Sign in</button>
+  </div>
+</form>
